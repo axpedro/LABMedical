@@ -74,12 +74,9 @@ export class LoginComponent {
       this.listUsers.push(this.SignUpForm.value);
       console.log(this.listUsers);
       localStorage.setItem('signUpUsers' , JSON.stringify(this.listUsers));
-      /*this.signUpUser = {
-        userName:'',
-        email:'',
-        password: '',
-        passwordConfirm:''
-      }*/
+      alert('Cadastro realizado com sucesso!')
+      this.SignUpForm.reset();
+        
     }
       
     else{
