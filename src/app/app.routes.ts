@@ -1,8 +1,13 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SideBarComponent } from './side-bar/side-bar.component';
 
-export const routes: Routes = [
+export const routes: Routes = [{
+
+
+    path:'', redirectTo:'/login', pathMatch:'full'
+},
     {
 
         path: 'login',
@@ -14,7 +19,8 @@ export const routes: Routes = [
         component: DashboardComponent
 
 
-    }
+    },
+   
 
 
 ];

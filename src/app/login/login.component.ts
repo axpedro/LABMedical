@@ -1,9 +1,12 @@
-import { Component , NgModule } from '@angular/core';
+import { Component , NgModule, ViewChild } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, FormGroupDirective, FormsModule, NgForm, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { SideBarComponent } from '../side-bar/side-bar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -16,7 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, FormsModule, ReactiveFormsModule, NgIf],
+  imports: [FormsModule, FormsModule, ReactiveFormsModule, NgIf, SideBarComponent, MatSidenavModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -25,12 +28,18 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class LoginComponent {
   
+
+
+
+[x: string]: any;
+
   SignUpForm: FormGroup;
   
     ngOnInit(){
     const localData = localStorage.getItem('signUpUsers');
     if(localData != null){
     this.listUsers = JSON.parse(localData);
+      
     }
     
       }
@@ -105,6 +114,8 @@ export class LoginComponent {
 alert('Função em desenvolvimento')
     
   }
+
+
 
 
   
