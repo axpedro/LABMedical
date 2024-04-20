@@ -5,6 +5,7 @@ import {CommonModule} from '@angular/common';
 import { BuscaCepService } from '../services/busca-cep.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 
 
 
@@ -14,14 +15,14 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-patient-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule, HttpClientModule, RouterModule],
+  imports: [NgxMaskDirective, NgxMaskPipe, ReactiveFormsModule, FormsModule, CommonModule, HttpClientModule, RouterModule],
   templateUrl: './patient-registration.component.html',
   styleUrl: './patient-registration.component.css',
   providers: [BuscaCepService]
 })
 export class PatientRegistrationComponent {
-
-  constructor(private buscaCep : BuscaCepService){
+  
+  constructor(private buscaCep : BuscaCepService , router : RouterModule){
   }
   consultaCep(valor: string, form: any){
     
@@ -69,16 +70,16 @@ this.AddressForm.patchValue({
   PatientForm: FormGroup = new FormGroup({
    
     fullName : new FormControl('' , [Validators.required , Validators.minLength(8), Validators.maxLength(64)]),
-    Cpf: new FormControl('', [Validators.required]),
+    Cpf: new FormControl(''),
     gender :new FormControl('' , [Validators.required]),
     birth: new FormControl('' , [Validators.required]),
-    rg : new FormControl('' , [Validators.required, Validators.minLength(20)]),
+    rg : new FormControl('' , [Validators.required, Validators.maxLength(20)]),
     rgExpeditor : new FormControl('', [Validators.required]),
     status : new FormControl('', [Validators.required]),
-    phone : new FormControl(''),
+    phone : new FormControl('', [Validators.required]),
     email : new FormControl('' , [Validators.email]),
     naturality : new FormControl('' , [Validators.required , Validators.minLength(8), Validators.maxLength(64)]),
-    emergencyTel : new FormControl(''),
+    emergencyTel : new FormControl('', [Validators.required]),
     address : this.AddressForm
 
   });

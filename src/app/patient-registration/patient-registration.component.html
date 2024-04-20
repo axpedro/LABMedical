@@ -4,11 +4,12 @@
         <p>
           <label for="fullName">Nome completo: </label>
           <input type="text" id="fullName" name="fullName" formControlName="fullName">
+          
         </p>
        
         <p>
           <label for="Cpf">CPF: </label>
-          <input type="text" id="Cpf" name="Cpf" formControlName="Cpf">
+          <input type="text" mask="000.000.000-00" name="Cpf" formControlName="Cpf">
         </p>
         <p>
             <label for="rg">RG: </label>
@@ -36,11 +37,11 @@
        
         <p>
 <label for="phone">Telefone: </label>
-            <input type="tel" id="phone" name="phone" formControlName="phone">
+            <input type="tel" mask="(00) 0 0000-0000" id="phone" name="phone" formControlName="phone">
           </p>
           <p>
             <label for="emergencyTel">Telefone de emergência: </label>
-            <input type="tel" id="emergencyTel" name="emergencyTel" formControlName="emergencyTel">
+            <input type="tel" mask="(00) 0 0000-0000"  id="emergencyTel" name="emergencyTel" formControlName="emergencyTel">
           </p>
 
         <p>
@@ -87,21 +88,18 @@
                 <label for="reference">Ponto de referência: </label>
                 <input type="text" id="reference" formControlName="reference" class="form-control">
 
-
               </div>
-
         </form>
-        
-        
-
-        
-
-
-        
-       
+          
        
         <p>
-          <button type="submit">Submit</button>
+          <button type="submit">Cadastrar</button>
+        </p>
+        <p>
+          <button disabled >Deletar</button>
+        </p>
+        <p>
+          <button disabled >Editar</button>
         </p>
        
       </form>
