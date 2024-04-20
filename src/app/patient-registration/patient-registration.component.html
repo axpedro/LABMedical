@@ -61,8 +61,8 @@
 
         <form [formGroup]="AddressForm" >
             <div class="address">
-                <label for="zip">CEP: </label><button>Busca CEP</button>
-                <input type="text" id="zip" formControlName="zip" class="form-control">
+                <label for="zip" >CEP: </label>
+                <input type="text" id="zip" formControlName="zip"  class="form-control" (blur)="consultaCep(AddressForm.get('zip')?.value, AddressForm)">
                 <label for="street">Rua: </label>
                 <input type="text" id="street" formControlName="street" class="form-control">
                 <label for="city">Cidade: </label>

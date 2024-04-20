@@ -1,16 +1,46 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import {CommonModule} from '@angular/common'
+import {CommonModule} from '@angular/common';
+import { BuscaCepService } from '../services/busca-cep.service';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+
+
+
+
+
 
 @Component({
   selector: 'app-patient-registration',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule, CommonModule],
+  imports: [ReactiveFormsModule, FormsModule, CommonModule, HttpClientModule, RouterModule],
   templateUrl: './patient-registration.component.html',
-  styleUrl: './patient-registration.component.css'
+  styleUrl: './patient-registration.component.css',
+  providers: [BuscaCepService]
 })
 export class PatientRegistrationComponent {
+
+  constructor(private buscaCep : BuscaCepService){
+  }
+  consultaCep(valor: string, form: any){
+    
+     this.buscaCep.getCep(valor).subscribe((dados=>this.cepData(dados, form)));
+  }
+
+
+cepData(dados :any, form : any){
+  console.log(dados);
+this.AddressForm.patchValue({
+ 
+    street : dados.logradouro,
+  
+
+});
+
+
+}
+
   AddressForm: FormGroup = new FormGroup({
     street: new FormControl(''),
     city: new FormControl(''),
@@ -18,6 +48,9 @@ export class PatientRegistrationComponent {
     zip: new FormControl('')
 
   })
+
+  
+
   PatientForm: FormGroup = new FormGroup({
    
     fullName : new FormControl(''),
