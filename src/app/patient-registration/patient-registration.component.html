@@ -1,0 +1,107 @@
+
+    <form [formGroup]="PatientForm" (ngSubmit)="onSubmit()">
+ 
+        <p>
+          <label for="fullName">Nome completo: </label>
+          <input type="text" id="fullName" name="fullName" formControlName="fullName">
+          
+        </p>
+       
+        <p>
+          <label for="Cpf">CPF: </label>
+          <input type="text" mask="000.000.000-00" name="Cpf" formControlName="Cpf">
+        </p>
+        <p>
+            <label for="rg">RG: </label>
+            <input type="text" id="rg" name="rg" formControlName="rg">
+          </p>
+       
+        <p>
+            <p>
+                <label for="rgExpeditor">Órgão expedidor</label>
+                <input type="text" id="rgExpeditor" name="rgExpeditor" formControlName="rgExpeditor">
+              </p>
+           
+            <p>
+          <label for="email">Email: </label>
+          <input type="text" id="email" name="email" formControlName="email">
+        </p>
+       
+        <p>
+
+          <label for="naturality">Naturalidade: </label>
+  <input type="text" id="naturality" name="naturality" formControlName="naturality">
+</p>
+<p>
+       
+       
+        <p>
+<label for="phone">Telefone: </label>
+            <input type="tel" mask="(00) 0 0000-0000" id="phone" name="phone" formControlName="phone">
+          </p>
+          <p>
+            <label for="emergencyTel">Telefone de emergência: </label>
+            <input type="tel" mask="(00) 0 0000-0000"  id="emergencyTel" name="emergencyTel" formControlName="emergencyTel">
+          </p>
+
+        <p>
+          <label for="gender">Sexo: </label>
+          <select id="gender" name="gender" formControlName="gender">
+            <option value="Homem">Homem</option>
+            <option value="Mulher">Mulher</option>
+            <option value="Prefiro não opinar">Prefiro não opinar</option>
+            
+          </select>
+        </p>
+       <p>
+        <label for="birth">Data de nascimento: </label>
+        <input type="date" id="birth" name="birth" formControlName="birth">
+
+       </p>
+       
+        <p>
+          <label for="status">Estado Civil </label>
+          <select id="status" name="status" formControlName="status">
+            <option value="Solteiro(a)">Solteiro(a)</option>
+            <option value="Casado(a)">Casado(a)</option>
+            <option value="Prefiro não opinar">Prefiro não opinar</option>
+            
+          </select>
+        </p>
+
+        <form [formGroup]="AddressForm" >
+            <div class="address">
+                <label for="zip" >CEP: </label>
+                <input type="text" id="zip" formControlName="zip"  class="form-control" (blur)="consultaCep(AddressForm.get('zip')?.value, AddressForm)">
+                <label for="street">Rua: </label>
+                <input type="text" id="street" formControlName="street" class="form-control">
+                <label for="city">Cidade: </label>
+                <input type="text" id="city" formControlName="city" class="form-control">
+                <label for="state">Estado: </label>
+                <input type="text" id="state" formControlName="state" class="form-control">
+                <label for="number">Numero: </label>
+                <input type="text" id="number" formControlName="number" class="form-control">
+                <label for="complement">Complemento: </label>
+                <input type="text" id="complement" formControlName="complement" class="form-control">
+                <label for="neighborhood">Bairro: </label>
+                <input type="text" id="neighborhood" formControlName="neighborhood" class="form-control">
+                <label for="reference">Ponto de referência: </label>
+                <input type="text" id="reference" formControlName="reference" class="form-control">
+
+              </div>
+        </form>
+          
+       
+        <p>
+          <button type="submit">Cadastrar</button>
+        </p>
+        <p>
+          <button disabled >Deletar</button>
+        </p>
+        <p>
+          <button disabled >Editar</button>
+        </p>
+       
+      </form>
+
+

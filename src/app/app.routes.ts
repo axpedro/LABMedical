@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { PatientRegistrationComponent } from './patient-registration/patient-registration.component';
 
 export const routes: Routes = [{
 
@@ -20,7 +21,12 @@ export const routes: Routes = [{
 
 
     },
-   
+    {
+        path:'patient-registration',
+        component: PatientRegistrationComponent
+
+
+    }
 
 
 ];
