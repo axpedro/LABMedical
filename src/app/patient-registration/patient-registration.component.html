@@ -1,0 +1,94 @@
+
+    <form [formGroup]="PatientForm" (ngSubmit)="onSubmit()">
+ 
+        <p>
+          <label for="fullName">Nome completo: </label>
+          <input type="text" id="fullName" name="fullName" formControlName="fullName">
+        </p>
+       
+        <p>
+          <label for="Cpf">CPF: </label>
+          <input type="text" id="Cpf" name="Cpf" formControlName="Cpf">
+        </p>
+        <p>
+            <label for="rg">RG: </label>
+            <input type="text" id="rg" name="rg" formControlName="rg">
+          </p>
+       
+        <p>
+            <p>
+                <label for="rgExpeditor">Órgão expedidor</label>
+                <input type="text" id="rgExpeditor" name="rgExpeditor" formControlName="rgExpeditor">
+              </p>
+           
+            <p>
+          <label for="email">Email: </label>
+          <input type="text" id="email" name="email" formControlName="email">
+        </p>
+        <p>
+            <label for="phone">Telefone: </label>
+            <input type="text" id="phone" name="phone" formControlName="phone">
+          </p>
+          <p>
+            <label for="emergencyTel">Telefone de emergência: </label>
+            <input type="text" id="emergencyTel" name="emergencyTel" formControlName="emergencyTel">
+          </p>
+
+        <p>
+          <label for="gender">Sexo: </label>
+          <select id="gender" name="gender" formControlName="gender">
+            <option value="1">Homem</option>
+            <option value="2">Mulher</option>
+            <option value="3">Prefiro não opinar</option>
+            
+          </select>
+        </p>
+       <p>
+        <label for="birth">Data de nascimento: </label>
+        <input type="date" id="birth" name="birth" formControlName="birth">
+
+       </p>
+       
+        <p>
+          <label for="status">Estado Civil </label>
+          <select id="status" name="status" formControlName="status">
+            <option value="1">Solteiro(a)</option>
+            <option value="2">Casado(a)</option>
+            <option value="3">Prefiro não opinar</option>
+            
+          </select>
+        </p>
+
+        <form [formGroup]="AddressForm" >
+            <div class="address">
+                <label for="zip">CEP: </label><button>Busca CEP</button>
+                <input type="text" id="zip" formControlName="zip" class="form-control">
+                <label for="street">Rua: </label>
+                <input type="text" id="street" formControlName="street" class="form-control">
+                <label for="city">Cidade: </label>
+                <input type="text" id="city" formControlName="city" class="form-control">
+                <label for="state">Estado: </label>
+                <input type="text" id="state" formControlName="state" class="form-control">
+
+
+
+
+              </div>
+
+        </form>
+        
+        
+
+        
+
+
+        
+       
+       
+        <p>
+          <button type="submit">Submit</button>
+        </p>
+       
+      </form>
+
+

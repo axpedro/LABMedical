@@ -19,7 +19,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, FormsModule, ReactiveFormsModule, NgIf, SideBarComponent, MatSidenavModule],
+  imports: [FormsModule, ReactiveFormsModule, NgIf, SideBarComponent, MatSidenavModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
