@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, FormsModule, Validators } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import { BuscaCepService } from '../services/busca-cep.service';
@@ -28,12 +28,23 @@ export class PatientRegistrationComponent {
      this.buscaCep.getCep(valor).subscribe((dados=>this.cepData(dados, form)));
   }
 
+ // patientList:any[] = [];
+
+onInit(){
+  
+      
+    }
+   
 
 cepData(dados :any, form : any){
   console.log(dados);
 this.AddressForm.patchValue({
  
     street : dados.logradouro,
+    city: dados.localidade,
+    state: dados.uf,
+    neighborhood: dados.bairro,
+    complement: dados.complemento,
   
 
 });
@@ -45,53 +56,60 @@ this.AddressForm.patchValue({
     street: new FormControl(''),
     city: new FormControl(''),
     state: new FormControl(''),
-    zip: new FormControl('')
+    zip: new FormControl(''),
+    number: new FormControl(''),
+    complement: new FormControl(''),
+    neighborhood: new FormControl(''),
+    reference: new FormControl(''),
 
   })
 
-  
+
 
   PatientForm: FormGroup = new FormGroup({
    
-    fullName : new FormControl(''),
-    Cpf: new FormControl(''),
-    ssp: new FormControl(''),
-    gender :new FormControl(''),
-    birth: new FormControl(''),
-    rg : new FormControl(''),
-    rgExpeditor : new FormControl(''),
-    status : new FormControl(''),
+    fullName : new FormControl('' , [Validators.required , Validators.minLength(8), Validators.maxLength(64)]),
+    Cpf: new FormControl('', [Validators.required]),
+    gender :new FormControl('' , [Validators.required]),
+    birth: new FormControl('' , [Validators.required]),
+    rg : new FormControl('' , [Validators.required, Validators.minLength(20)]),
+    rgExpeditor : new FormControl('', [Validators.required]),
+    status : new FormControl('', [Validators.required]),
     phone : new FormControl(''),
-    email : new FormControl(''),
-    nationality : new FormControl(''),
+    email : new FormControl('' , [Validators.email]),
+    naturality : new FormControl('' , [Validators.required , Validators.minLength(8), Validators.maxLength(64)]),
     emergencyTel : new FormControl(''),
     address : this.AddressForm
 
   });
   onSubmit(){
+    const isFormValid = this.PatientForm.valid;
+    console.log(isFormValid);
     console.log(this.PatientForm.value);
-
+    if(isFormValid){
+      const localData = localStorage.getItem('patientsList');
+    if(localData != null){
+      const listaPacientes = JSON.parse(localData);
+      listaPacientes.push(this.PatientForm.value);
+      localStorage.setItem('patientsList',JSON.stringify(listaPacientes));
+      alert('Cadastrado com sucesso');
+  }
+  else {
+    const listaPacientes=[];
+    listaPacientes.push(this.PatientForm.value);
+    localStorage.setItem('patientsList',JSON.stringify(listaPacientes));
+    alert('Cadastrado com sucesso');
   }
 
-// Nome Completo: Obrigatório, com máximo e mínimo de 64 e 8 caracteres, respectivamente.
-// Gênero: Obrigatório com dropdown de opções pré-definidas.
-// Data de Nascimento: Obrigatório, data válida.
-// CPF: Obrigatório com o formato 000.000.000-00
-// RG com órgão expedidor: Obrigatório, com máximo de 20 caracteres.
-// Estado Civil: Obrigatório com dropdown de opções pré-definidas.
-// Telefone: Obrigatório com o formato (99) 9 9999-99999
-// E-mail: Não obrigatório e com validação.
-// Naturalidade: Obrigatório, com máximo e mínimo de 64 e 8 caracteres, respectivamente.
-// Contato de Emergência: Obrigatório com o formato (99) 9 9999-99999
-// Lista de Alergias: Não obrigatório.
-// Lista de Cuidados Específicos: Não obrigatório.
-// Convênio: Não obrigatório.
-// Número do Convênio: Não obrigatório.
-// Validade do Convênio: Não obrigatório.
-// Endereço: Cep, Cidade, Estado, Logradouro, Número, Complemento, Bairro e Ponto de Referência.
+    }
+    else{
+      
+      alert('Preencha os dados corretamente como informado no formulário');
+    }
 
-
-
+    
+    
+  }
 
 
 

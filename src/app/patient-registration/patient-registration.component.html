@@ -25,21 +25,30 @@
           <label for="email">Email: </label>
           <input type="text" id="email" name="email" formControlName="email">
         </p>
+       
         <p>
-            <label for="phone">Telefone: </label>
-            <input type="text" id="phone" name="phone" formControlName="phone">
+
+          <label for="naturality">Naturalidade: </label>
+  <input type="text" id="naturality" name="naturality" formControlName="naturality">
+</p>
+<p>
+       
+       
+        <p>
+<label for="phone">Telefone: </label>
+            <input type="tel" id="phone" name="phone" formControlName="phone">
           </p>
           <p>
             <label for="emergencyTel">Telefone de emergência: </label>
-            <input type="text" id="emergencyTel" name="emergencyTel" formControlName="emergencyTel">
+            <input type="tel" id="emergencyTel" name="emergencyTel" formControlName="emergencyTel">
           </p>
 
         <p>
           <label for="gender">Sexo: </label>
           <select id="gender" name="gender" formControlName="gender">
-            <option value="1">Homem</option>
-            <option value="2">Mulher</option>
-            <option value="3">Prefiro não opinar</option>
+            <option value="Homem">Homem</option>
+            <option value="Mulher">Mulher</option>
+            <option value="Prefiro não opinar">Prefiro não opinar</option>
             
           </select>
         </p>
@@ -52,9 +61,9 @@
         <p>
           <label for="status">Estado Civil </label>
           <select id="status" name="status" formControlName="status">
-            <option value="1">Solteiro(a)</option>
-            <option value="2">Casado(a)</option>
-            <option value="3">Prefiro não opinar</option>
+            <option value="Solteiro(a)">Solteiro(a)</option>
+            <option value="Casado(a)">Casado(a)</option>
+            <option value="Prefiro não opinar">Prefiro não opinar</option>
             
           </select>
         </p>
@@ -69,8 +78,14 @@
                 <input type="text" id="city" formControlName="city" class="form-control">
                 <label for="state">Estado: </label>
                 <input type="text" id="state" formControlName="state" class="form-control">
-
-
+                <label for="number">Numero: </label>
+                <input type="text" id="number" formControlName="number" class="form-control">
+                <label for="complement">Complemento: </label>
+                <input type="text" id="complement" formControlName="complement" class="form-control">
+                <label for="neighborhood">Bairro: </label>
+                <input type="text" id="neighborhood" formControlName="neighborhood" class="form-control">
+                <label for="reference">Ponto de referência: </label>
+                <input type="text" id="reference" formControlName="reference" class="form-control">
 
 
               </div>
