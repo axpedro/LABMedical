@@ -1,0 +1,18 @@
+.card {
+    border: 1px solid;
+    border-radius: 6px;
+    padding: 16px 8px;
+    width: 60%;
+    flex-direction: column;
+    text-align: center;
+      
+   
+  }
+  
+  img {
+    width: 115px;
+  }
+  
+  span {
+    margin-top: 16px;
+  }

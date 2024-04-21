@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="busca">
+      <label for="" >Busca paciente: </label>
+      <input type="text" [(ngModel)]="nomePesquisa">
+      <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
+    </div>
+
+    <div class="card" *ngFor="let patient of listaPacientes" >
+        <div>
+            <a>
+            <i class="material-icons">person</i>
+        
+        </a>
+          <p><span>{{ patient.fullName}}</span></p>
+          <!-- <p  [routerLink]="['/patient', paciente.id]">Detalhes</p> -->
+          
+        </div>
+      </div>
+    <!-- <app-card *ngFor="let produto of listaProdutosFiltro" [item]="produto"></app-card> -->
