@@ -8,10 +8,6 @@ import { RouterModule } from '@angular/router';
 import { NgxMaskDirective, NgxMaskPipe, provideEnvironmentNgxMask } from 'ngx-mask';
 
 
-
-
-
-
 @Component({
   selector: 'app-patient-registration',
   standalone: true,
@@ -28,8 +24,6 @@ export class PatientRegistrationComponent {
     
      this.buscaCep.getCep(valor).subscribe((dados=>this.cepData(dados, form)));
   }
-
- // patientList:any[] = [];
 
 onInit(){
   

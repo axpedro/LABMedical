@@ -6,13 +6,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgIf } from '@angular/common';
 import { PatientRegistrationComponent } from './patient-registration/patient-registration.component';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { CadastroConsultaComponent } from './cadastro-consulta/cadastro-consulta.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [NgxMaskDirective, NgxMaskPipe,RouterOutlet, LoginComponent, SideBarComponent, DashboardComponent, NgIf,PatientRegistrationComponent]
+    imports: [NgxMaskDirective, NgxMaskPipe,RouterOutlet, LoginComponent, SideBarComponent, DashboardComponent, NgIf,PatientRegistrationComponent, CadastroConsultaComponent]
 })
 export class AppComponent {
   title = 'LABMedical';

@@ -3,6 +3,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { PatientRegistrationComponent } from './patient-registration/patient-registration.component';
+import { CadastroConsultaComponent } from './cadastro-consulta/cadastro-consulta.component';
 
 export const routes: Routes = [{
 
@@ -25,6 +26,10 @@ export const routes: Routes = [{
         path:'patient-registration',
         component: PatientRegistrationComponent
 
+
+    },{
+        path:'cadastro-consulta',
+        component: CadastroConsultaComponent
 
     }
 
