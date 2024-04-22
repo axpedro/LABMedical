@@ -6,5 +6,5 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideEnvironmentNgxMask } from 'ngx-mask';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes), provideAnimationsAsync(), provideEnvironmentNgxMask()]
+  providers: [provideRouter(routes), provideAnimationsAsync(), provideEnvironmentNgxMask(), provideAnimationsAsync()]
 };

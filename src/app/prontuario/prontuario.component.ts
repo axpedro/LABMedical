@@ -1,42 +1,46 @@
+import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-prontuario',
   standalone: true,
-  imports: [MatDividerModule, MatListModule, RouterLink],
+  imports: [MatDividerModule, MatListModule, RouterLink, NgIf],
   templateUrl: './prontuario.component.html',
-  styleUrl: './prontuario.component.css'
+  styleUrl: './prontuario.component.css',
 })
 export class ProntuarioComponent {
-listaPacientes: any;
-listaCheia: any;
-constructor(private activeRoute: ActivatedRoute){}
+  paciente: any;
+  listaPacientes: any;
+  listaCheia: any;
+  constructor(private activeRoute: ActivatedRoute) {}
 
-ngOnInit(){
-  this.activeRoute.params.subscribe(params =>{
-    
-    const id = params;
-  })
-  const localData = localStorage.getItem('patientsList');
-  if(localData != null){
-    
-    this.listaPacientes = JSON.parse(localData);
-    this.listaCheia = this.listaPacientes;
-     
-     
-}
-else {
-  
-  
-}}
+  ngOnInit() {
+    const localData = localStorage.getItem('patientsList');
+    if (localData != null) {
+      this.listaPacientes = JSON.parse(localData);
+    } else {
+    }
+    this.activeRoute.params.subscribe((params) => {
+      let id = params['id'];
 
+      this.paciente = this.listaPacientes.filter(
+        (paciente: { id: string }) => paciente.id === id
+      );
+      console.log('Paciente filtrado:', this.paciente);
+    });
+  }
 
-getDetailsID(id : number){
+  getDetailsID(paciente: any) {}
 
-
-
-}
-
+  filtraPct(id: string) {
+    if (!id) {
+      alert('pct nao encontrado');
+    } else {
+      this.paciente = this.listaPacientes.filter((patient: { id: string }) =>
+        patient.id.includes(id)
+      );
+    }
+  }
 }
