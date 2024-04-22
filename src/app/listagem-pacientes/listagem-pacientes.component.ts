@@ -1,13 +1,14 @@
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { CommonModule, formatDate, getLocaleTimeFormat } from '@angular/common';
 import { Component, Input, NgModule } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listagem-pacientes',
   standalone: true,
-  imports: [NgFor, CommonModule, FormsModule],
+  imports: [NgFor, CommonModule, FormsModule, NgIf],
   templateUrl: './listagem-pacientes.component.html',
   styleUrl: './listagem-pacientes.component.css'
 })
@@ -16,7 +17,9 @@ nomePesquisa = '';
 listaPacientes: any;
 listaCheia: any;
 
-
+constructor(private router : Router){
+  
+}
   ngOnInit(){
   const localData = localStorage.getItem('patientsList');
   if(localData != null){
@@ -32,8 +35,14 @@ else {
 }
 
 
-
 }
+onPacienteSelected(paciente : any){
+  this.router.navigate(['/prontuario', paciente.id]);
+  console.log(paciente);
+  alert("clicou");
+}
+
+
 filtraPct(nomePesquisa: string) {
   this.nomePesquisa = nomePesquisa; // Update search term
   if (!nomePesquisa) {
