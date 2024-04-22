@@ -6,6 +6,7 @@ import { PatientRegistrationComponent } from './patient-registration/patient-reg
 import { CadastroConsultaComponent } from './cadastro-consulta/cadastro-consulta.component';
 import { CadastroExameComponent } from './cadastro-exame/cadastro-exame.component';
 import { ListagemPacientesComponent } from './listagem-pacientes/listagem-pacientes.component';
+import { ProntuarioComponent } from './prontuario/prontuario.component';
 
 export const routes: Routes = [{
 
@@ -43,7 +44,14 @@ export const routes: Routes = [{
         path:'listagem-pacientes',
         component: ListagemPacientesComponent
 
-    }
+    },
+    {
+        path:'prontuario',
+        component: ProntuarioComponent
+    },
+    { path: 'prontuario/:id', component: ProntuarioComponent
+
+     },
 
 
 ];
