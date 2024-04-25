@@ -84,9 +84,17 @@ export class PatientRegistrationComponent {
       Validators.minLength(8),
       Validators.maxLength(64),
     ]),
+    alergias: new FormControl(''),
+    cuidados: new FormControl(''),
+    NomeConvenio: new FormControl(''),
+    NumeroConvenio: new FormControl(''),
+    validadeConvenio: new FormControl(''),
+    idsExames: new FormControl([]),
+    idsConsultas: new FormControl([]),
     emergencyTel: new FormControl('', [Validators.required]),
     address: this.AddressForm,
   });
+
   onSubmit() {
     const isFormValid = this.PatientForm.valid;
     console.log(isFormValid);
@@ -99,12 +107,12 @@ export class PatientRegistrationComponent {
         localStorage.setItem('patientsList', JSON.stringify(listaPacientes));
         this.PatientForm.reset();
         alert('Cadastrado com sucesso');
-        this.PatientForm.reset();
       } else {
         const listaPacientes = [];
         listaPacientes.push(this.PatientForm.value);
         localStorage.setItem('patientsList', JSON.stringify(listaPacientes));
         alert('Cadastrado com sucesso');
+        this.PatientForm.reset();
       }
     } else {
       alert('Preencha os dados corretamente como informado no formulário');
