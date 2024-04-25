@@ -1,15 +1,25 @@
 <div class="dadosPaciete">
   <mat-list>
+    <p></p>
+    <mat-list-item>
+      <p>Nome : {{ paciente?.[0].fullName }}</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
     <mat-list-item
-      ><div>
-        <p>Nome : {{ paciente?.[0].fullName }}</p>
-        <!-- <p>ID do Paciente: {{ paciente.id }}</p> -->
-      </div></mat-list-item
+      ><p>Tel : {{ paciente?.[0].emergencyTel }}</p></mat-list-item
     >
     <mat-divider></mat-divider>
-    <mat-list-item>Item 2</mat-list-item>
+    <mat-list-item
+      ><p>Convenio : {{ paciente?.[0].NomeConvenio }}</p>
+    </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Item 3</mat-list-item>
+    <mat-list-item
+      ><p>Alergias : {{ paciente?.[0].alergias }}</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <p>Cuidados : {{ paciente?.[0].cuidados }}</p>
+    </mat-list-item>
   </mat-list>
 </div>
 

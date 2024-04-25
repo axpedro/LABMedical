@@ -1,4 +1,4 @@
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
@@ -6,7 +6,7 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-prontuario',
   standalone: true,
-  imports: [MatDividerModule, MatListModule, RouterLink, NgIf],
+  imports: [MatDividerModule, MatListModule, RouterLink, NgIf, NgFor],
   templateUrl: './prontuario.component.html',
   styleUrl: './prontuario.component.css',
 })
@@ -34,13 +34,13 @@ export class ProntuarioComponent {
 
   getDetailsID(paciente: any) {}
 
-  filtraPct(id: string) {
-    if (!id) {
-      alert('pct nao encontrado');
-    } else {
-      this.paciente = this.listaPacientes.filter((patient: { id: string }) =>
-        patient.id.includes(id)
-      );
-    }
-  }
+  // filtraPct(id: string) {
+  //   if (!id) {
+  //     alert('pct nao encontrado');
+  //   } else {
+  //     this.paciente = this.listaPacientes.filter((patient: { id: string }) =>
+  //       patient.id.includes(id)
+  //     );
+  //   }
+  // }
 }
