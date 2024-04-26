@@ -1,6 +1,10 @@
-# LABMedical
+Projeto elaborado para o curso FullStack - FLoripaMaisTec
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+Proposta de gerenciador de uma clínica médica. 
+Como forma de padronização o software se chama LabMedical e foi focada em solucionar o problema de gerencimento de pacientes, suas consultas e exames na clínica.
+Foi projetado utilizando o  [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3. como framework. HTML para template, css para estilização é typescript para código.
+O projeto ainda não está finalizado, e algumas features ainda serão implementadas, bem como a estilização e padronização do projeto.
+Abaixo as orientações padrões para execução do projeto
 
 ## Development server
 
