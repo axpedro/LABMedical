@@ -2,8 +2,9 @@ import { CommonModule, formatDate, getLocaleTimeFormat } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid'; 
+import { TitleHeaderService } from '../services/title-header.service';
 @Component({
   selector: 'app-cadastro-consulta',
   standalone: true,
@@ -12,6 +13,20 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrl: './cadastro-consulta.component.css'
 })
 export class CadastroConsultaComponent {
+  constructor(private router: Router, private headerTitle: TitleHeaderService) {}
+  ngOnInit() {
+    
+    setTimeout(() => {
+      this.headerTitle.setTitle('Cadastro Consulta');
+    });
+    const localData = localStorage.getItem('consultaList');
+    
+      
+      
+    
+  };
+
+
   
   ConsultaForm: FormGroup = new FormGroup({
     id : new FormControl(uuidv4()),
@@ -23,13 +38,8 @@ export class CadastroConsultaComponent {
     
   })
 
-ngOninit(){
-  const localData = localStorage.getItem('consultaList');
-  
-    
-    
-  
-};
+
+
 
 
 

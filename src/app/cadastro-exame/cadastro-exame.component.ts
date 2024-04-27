@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid'; 
+import { TitleHeaderService } from '../services/title-header.service';
 @Component({
   selector: 'app-cadastro-exame',
   standalone: true,
@@ -12,7 +13,18 @@ import { v4 as uuidv4 } from 'uuid';
   styleUrl: './cadastro-exame.component.css'
 })
 export class CadastroExameComponent {
-
+  
+  constructor(private headerTitle: TitleHeaderService){}
+  ngOnInit(){
+    setTimeout(() => {
+      this.headerTitle.setTitle('Cadastro de Exames');
+    });  
+    //const localData = localStorage.getItem('exameList');
+    
+      
+      
+    
+  };
 
   ExamesForm: FormGroup = new FormGroup({
     id : new FormControl(uuidv4()),
@@ -24,13 +36,7 @@ export class CadastroExameComponent {
     resultados: new FormControl('' ,[Validators.required , Validators.minLength(16), Validators.maxLength(1024)]),
   })
 
-ngOninit(){
-  //const localData = localStorage.getItem('exameList');
   
-    
-    
-  
-};
 
 
 
