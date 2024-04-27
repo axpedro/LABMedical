@@ -30,13 +30,13 @@ export class ProntuarioComponent {
       let id = params['id'];
 
       this.paciente = this.listaPacientes.filter(
-        (paciente: { id: string }) => paciente.id === id
+        (paciente: { id: string }) => paciente?.id === id
       );
       console.log('Paciente filtrado:', this.paciente);
     });
   }
 
-  getDetailsID(paciente: any) {}
+  //getDetailsID(paciente: any) {}
 
   // filtraPct(id: string) {
   //   if (!id) {
