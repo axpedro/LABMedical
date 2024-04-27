@@ -29,10 +29,9 @@ import { HeaderComponent } from './header/header.component';
 })
 export class AppComponent {
   title = 'LABMedical';
-
   showSidebar = true;
   constructor(private router: Router) {}
-  // @ViewChild('loginPage') loginPage: LoginComponent | any;
+ 
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
