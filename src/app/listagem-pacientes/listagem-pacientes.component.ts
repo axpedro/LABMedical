@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './listagem-pacientes.component.css',
 })
 export class ListagemPacientesComponent {
+  pageTitle: string = 'Listagem Pacientes';
   nomePesquisa = '';
   listaPacientes: any;
   listaCheia: any;

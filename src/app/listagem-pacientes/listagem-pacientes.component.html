@@ -1,26 +1,28 @@
 <div class="container">
-    <div class="busca">
-      <label for="" >Busca paciente: </label>
-      <input type="text" [(ngModel)]="nomePesquisa">
-      <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
-    </div>
+  <div class="busca">
+    <label for="">Busca paciente: </label>
+    <input type="text" [(ngModel)]="nomePesquisa" />
+    <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
+  </div>
 
-    <li class="card" *ngFor="let patient of listaPacientes" (click)="onPacienteSelected(patient)"  >
-      
-        <div>
-          
-            <a>
-            <i class="material-icons">person</i>
-        
-        </a>
-          <p><span>{{ patient.fullName}}</span></p>
-          
-          <!-- <a [routerLink]="['/patient', 2]">Detalhes</a> -->
-          <!-- <p  [routerLink]="['/patient', paciente.id]">Detalhes</p> -->
-          
-        </div>
-       
-      </li>
-      
-      <span *ngIf="listaPacientes == undefined">Não há pacientes cadastrados</span>
-    <!-- <app-card *ngFor="let produto of listaProdutosFiltro" [item]="produto"></app-card> -->
+  <li
+    class="card"
+    *ngFor="let patient of listaPacientes"
+    (click)="onPacienteSelected(patient)"
+  >
+    <div>
+      <a>
+        <i class="material-icons">person</i>
+      </a>
+      <p>
+        <span>{{ patient.fullName }}</span>
+      </p>
+
+      <!-- <a [routerLink]="['/patient', 2]">Detalhes</a> -->
+      <!-- <p  [routerLink]="['/patient', paciente.id]">Detalhes</p> -->
+    </div>
+  </li>
+
+  <span *ngIf="listaPacientes == undefined">Não há pacientes cadastrados</span>
+  <!-- <app-card *ngFor="let produto of listaProdutosFiltro" [item]="produto"></app-card> -->
+</div>
