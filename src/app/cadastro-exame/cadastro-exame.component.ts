@@ -50,14 +50,12 @@ export class CadastroExameComponent {
   const newExame = this.ExamesForm.value;
    
     if(isFormValid){
-      const localData = localStorage.getItem('exameList');
+    const localData = localStorage.getItem('exameList');
     if(localData != null){
       const listaExames = JSON.parse(localData);
       listaExames.push(this.ExamesForm.value);
       //this.pacienteSelected.idsExames.push(this.ExamesForm.value.id);
-      
-      
-     
+                    
       if (this.pacienteSelected && this.pacienteSelected.idsExames) {
         console.log('pct encontrado')
         this.pacienteSelected.idsExames.push(newExame.id);
@@ -66,13 +64,11 @@ export class CadastroExameComponent {
       } else {
        alert('Favor selecionar um paciente da lista para inserir o exame');
        // this.pacienteSelected.idsExames = [newExame.id];
-        return
+       // return
       }
-  
-     
-      
+             
        if (this.listaPacientes != null) {
-        console.log('objeto pct com id de exame' , this.listaPacientes )
+       // console.log('objeto pct com id de exame' , this.listaPacientes )
          //const patientList = JSON.parse(this.listaPacientes);
        const index = this.listaPacientes.findIndex((patient: any) => patient.id === this.pacienteSelected.id);
          if (index !== -1) {
@@ -84,7 +80,7 @@ export class CadastroExameComponent {
 
 
       alert('Exame cadastrado com sucesso');
-      this.ExamesForm.reset();
+      
 
 
   }

@@ -73,7 +73,7 @@ export class PatientRegistrationComponent {
   });
 
   PatientForm: FormGroup = new FormGroup({
-    id: new FormControl(uuidv4()),
+    id: new FormControl(''),
     fullName: new FormControl('', [
       Validators.required,
       Validators.minLength(8),
@@ -108,10 +108,12 @@ export class PatientRegistrationComponent {
     console.log(isFormValid);
     console.log(this.PatientForm.value);
     if (isFormValid) {
+      const newConsultaFormValue = { ...this.PatientForm.value, id: uuidv4() };
       const localData = localStorage.getItem('patientsList');
       if (localData != null) {
         const listaPacientes = JSON.parse(localData);
-        listaPacientes.push(this.PatientForm.value);
+        listaPacientes.push(newConsultaFormValue);
+        //listaPacientes.push(this.PatientForm.value);
         localStorage.setItem('patientsList', JSON.stringify(listaPacientes));
         this.PatientForm.reset();
         alert('Cadastrado com sucesso');

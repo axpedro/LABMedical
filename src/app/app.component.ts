@@ -30,7 +30,7 @@ import { HeaderComponent } from './header/header.component';
 export class AppComponent {
   title = 'LABMedical';
   showSidebar = true;
- 
+  listaPacientes: any
 
   constructor(private router: Router) {}
  
@@ -46,5 +46,14 @@ export class AppComponent {
         
       }
     });
+
+    // const localData = localStorage.getItem('patientsList');
+    // if (localData != null) {
+    //   this.listaPacientes = JSON.parse(localData);
+    // } else {
+    // }
+    // this.listaPacientes.splice(1);
+    // localStorage.setItem('patientsList',JSON.stringify(this.listaPacientes));
+
   }
 }

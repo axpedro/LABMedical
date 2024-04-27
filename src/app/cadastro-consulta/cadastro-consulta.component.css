@@ -1,24 +1,18 @@
-/* 
-
-
-.formulario{
-padding: 20px;
-margin: 20px;
-
-
-
-
+.card{
+    display: inline-block;
+    flex: content;
+    flex-direction: column;
+    padding: 15px;
+}
+li{
+    
+    list-style-type: none;
+    text-align: center;
+    border: solid ;
+    margin: 4px;
+    border-radius: 10%;
 }
 
-
-.container{
-    margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	font-family: 'Jost', sans-serif;
-	background: white;
-
-} */
+.selected-card {
+    background-color: #56d41c; /* Change this to the color you prefer */
+  }
