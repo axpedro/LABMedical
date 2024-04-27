@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { TitleHeaderService } from '../services/title-header.service';
 @Component({
   selector: 'app-prontuario',
   standalone: true,
@@ -14,9 +15,12 @@ export class ProntuarioComponent {
   paciente: any;
   listaPacientes: any;
   listaCheia: any;
-  constructor(private activeRoute: ActivatedRoute) {}
+  constructor(private activeRoute: ActivatedRoute, private headerTitle: TitleHeaderService) {}
 
   ngOnInit() {
+    setTimeout(() => {
+      this.headerTitle.setTitle('Prontuário');
+    });
     const localData = localStorage.getItem('patientsList');
     if (localData != null) {
       this.listaPacientes = JSON.parse(localData);

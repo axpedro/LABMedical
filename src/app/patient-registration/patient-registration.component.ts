@@ -17,6 +17,7 @@ import {
   provideEnvironmentNgxMask,
 } from 'ngx-mask';
 import { v4 as uuidv4 } from 'uuid';
+import { TitleHeaderService } from '../services/title-header.service';
 
 @Component({
   selector: 'app-patient-registration',
@@ -35,12 +36,19 @@ import { v4 as uuidv4 } from 'uuid';
   providers: [BuscaCepService],
 })
 export class PatientRegistrationComponent {
-  constructor(private buscaCep: BuscaCepService, router: RouterModule) {}
+  
+
+  constructor(private buscaCep: BuscaCepService, router: RouterModule, private headerTitle: TitleHeaderService) {}
   consultaCep(valor: string, form: any) {
     this.buscaCep.getCep(valor).subscribe((dados) => this.cepData(dados, form));
   }
 
-  onInit() {}
+  ngOnInit() {
+    setTimeout(() => {
+      this.headerTitle.setTitle('Cadastro de paciente');
+    });
+    
+  }
 
   cepData(dados: any, form: any) {
     console.log(dados);

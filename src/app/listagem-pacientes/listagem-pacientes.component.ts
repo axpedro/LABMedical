@@ -4,6 +4,7 @@ import { Component, Input, NgModule } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TitleHeaderService } from '../services/title-header.service';
 
 @Component({
   selector: 'app-listagem-pacientes',
@@ -13,13 +14,16 @@ import { Router } from '@angular/router';
   styleUrl: './listagem-pacientes.component.css',
 })
 export class ListagemPacientesComponent {
-  pageTitle: string = 'Listagem Pacientes';
+  
   nomePesquisa = '';
   listaPacientes: any;
   listaCheia: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private headerTitle: TitleHeaderService) {}
   ngOnInit() {
+    setTimeout(() => {
+      this.headerTitle.setTitle('Listagem Pacientes');
+    });
     const localData = localStorage.getItem('patientsList');
     if (localData != null) {
       this.listaPacientes = JSON.parse(localData);

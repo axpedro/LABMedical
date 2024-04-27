@@ -30,6 +30,8 @@ import { HeaderComponent } from './header/header.component';
 export class AppComponent {
   title = 'LABMedical';
   showSidebar = true;
+ 
+
   constructor(private router: Router) {}
  
 
@@ -37,8 +39,11 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd && event.url === '/login') {
         this.showSidebar = false;
+        
       } else {
         this.showSidebar = true;
+        
+        
       }
     });
   }
