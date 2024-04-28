@@ -7,7 +7,7 @@
   <div class="card">
     <li [class.selected-card]="pacienteSelected && pacienteSelected.id === patient.id"
     class="card"
-    class="card"
+    
     *ngFor="let patient of listaPacientes"
     (click)="onPacienteSelected(patient)">
     <div>
