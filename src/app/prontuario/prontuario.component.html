@@ -24,12 +24,23 @@
 </div>
 
 <div class="dadosConsulta">
+  <li
+  class="card"
+  *ngFor="let exame of examsFrompct">
   <mat-list>
-    <mat-list-item>Item 1</mat-list-item>
+    
+    <mat-list-item  ><p style="font-weight: bold;">Nome exame : {{ exame?.nomeExame }}</p> </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Item 2</mat-list-item>
+    
+    <mat-list-item><p style="font-weight: bold;">Horario exame : {{ exame?.horarioExame }}</p></mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Item 3</mat-list-item>
+    <mat-list-item><p style="font-weight: bold;">Data do Exame : {{ exame?.dataExame }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p style="font-weight: bold;">Laboratório: : {{ exame?.laboratorio }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p>Tipo de exame : {{ exame?.tipoExame }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p>Resultados : {{ exame?.resultados }}</p></mat-list-item>
   </mat-list>
 </div>
 
