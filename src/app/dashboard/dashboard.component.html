@@ -1,5 +1,48 @@
+<div class="stats">
+<p>
+    <label for="">Pacientes: {{qtdPacientes}}</label>
+</p>
+<p>
+    <label for="">Consultas: {{qtdExames}}</label>
+</p>
+<p>
+    <label for="">Exames: {{qtdConsultas}}</label>
+</p>
 
-   
+</div>
+<div class="busPct">
+    <div class="busca">
+        <label for="">Busca paciente: </label>
+        <input type="text" [(ngModel)]="nomePesquisa" />
+        <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
+      </div>
+
+</div>
+<div class="card">
+    <li  *ngFor="let patient of listaPctObj"
+    (click)="verDetalhes()">
+    <div>
+     <p>
+        <a>
+            <i class="material-icons">person</i>
+          </a>
+          
+            <span>{{ patient.fullName }}</span>
+            <span>{{ patient.email }}</span>
+            <span >{{patient.phone | mask: '(00)0 0000-0000'}}</span>
+            <span>{{ patient.NomeConvenio }}</span>
+            <span>{{ patient.birth }}</span>
+
+            <button (click)="deatlhes()">Detalhes</button>
+       
+            
+     </p>
+       
+      
+    </div>
+  </li>
+
+  </div>
    
 
    
