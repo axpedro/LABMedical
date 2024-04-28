@@ -23,9 +23,8 @@
   </mat-list>
 </div>
 
-<div class="dadosConsulta">
-  <li
-  class="card"
+<div class="dadosExame">
+  <li class="card"
   *ngFor="let exame of examsFrompct">
   <mat-list>
     
@@ -44,12 +43,21 @@
   </mat-list>
 </div>
 
-<div class="dadosExame">
+<div class="dadosConsulta">
+  <li class="card"
+  *ngFor="let consulta of consultasFrompct">
   <mat-list>
-    <mat-list-item>Item 1</mat-list-item>
+    
+    <mat-list-item  ><p style="font-weight: bold;">Motivo Consulta : {{ consulta?.motivo }}</p> </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Item 2</mat-list-item>
+    <mat-list-item><p style="font-weight: bold;">Data da consulta : {{ consulta?.dataConsulta }}</p></mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>Item 3</mat-list-item>
+    <mat-list-item><p style="font-weight: bold;">Horário da consulta: : {{ consulta?.horarioConsulta }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p>Dosagem e Precauções : {{ consulta?.dosagemPrecaucao }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    
+    <mat-list-item><p >Descrição : {{ consulta?.descricao }}</p></mat-list-item>
+    
   </mat-list>
 </div>

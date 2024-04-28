@@ -14,7 +14,7 @@ import { TitleHeaderService } from '../services/title-header.service';
 export class ProntuarioComponent {
   paciente: any;
   examsFrompct: any;
-  consultas:any;
+  consultasFrompct:any;
   
   listaPacientes: any;
   listaExames: any;
@@ -42,7 +42,7 @@ export class ProntuarioComponent {
        if (this.paciente && this.paciente.length > 0) {
        const patient = this.paciente[0]; 
         this.examsFrompct = getExamsFromPatient(patient, this.listaExames); 
-        
+        this.consultasFrompct = getConsultsFromPatient(patient, this.listaConsultas); 
       }
           
     });
@@ -57,6 +57,19 @@ export class ProntuarioComponent {
         }
       }
       return examsFromPct; //retorna um array de objetos-exames
+    }
+
+
+    function getConsultsFromPatient(patient: any, ConsultList: any[]): any[] { 
+      const consultasFrompct: any[] = [];
+      for (const id of patient.idsConsultas
+      ) {
+        const matchingConsultas = ConsultList.find(consul => consul.id === id);
+        if (matchingConsultas) {
+          consultasFrompct.push(matchingConsultas);
+        }
+      }
+      return consultasFrompct; //retorna um array de objetos-exames
     }
 
 
