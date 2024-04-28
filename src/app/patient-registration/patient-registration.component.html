@@ -195,10 +195,11 @@
   <p>
     <button type="submit">Cadastrar</button>
   </p>
-  <p>
-    <button disabled>Deletar</button>
-  </p>
-  <p>
-    <button disabled>Editar</button>
-  </p>
+ 
 </form>
+<p>
+  <button *ngIf="isButtonEnabled" (click)="verificaIds()" >Deletar</button>
+</p>
+<p>
+  <button *ngIf="isButtonEnabled" >Editar</button>
+</p>
