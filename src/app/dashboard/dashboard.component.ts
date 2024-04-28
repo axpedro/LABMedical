@@ -5,12 +5,14 @@ import { TitleHeaderService } from '../services/title-header.service';
 import { FormGroup, FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
+import { AgePipe } from '../pipes/age.pipe';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [SideBarComponent, RouterOutlet, FormsModule, CommonModule,  NgxMaskDirective,
-    NgxMaskPipe,],
+    NgxMaskPipe, AgePipe],
+    providers: [AgePipe],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -22,7 +24,7 @@ export class DashboardComponent {
   listaPctObj: any;
   listaCheia: any;
 
-  constructor(private headerTitle: TitleHeaderService){}
+  constructor(private headerTitle: TitleHeaderService, age : AgePipe){}
   ngOnInit() {
     setTimeout(() => {
       this.headerTitle.setTitle('Estatísticas');

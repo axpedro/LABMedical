@@ -31,7 +31,7 @@
             <span>{{ patient.email }}</span>
             <span >{{patient.phone | mask: '(00)0 0000-0000'}}</span>
             <span>{{ patient.NomeConvenio }}</span>
-            <span>{{ patient.birth }}</span>
+            <span>{{ patient.birth | age }}</span>
 
             <button (click)="deatlhes()">Detalhes</button>
        
