@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { SideBarComponent } from '../side-bar/side-bar.component';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { TitleHeaderService } from '../services/title-header.service';
 import { FormGroup, FormsModule, NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -24,7 +24,7 @@ export class DashboardComponent {
   listaPctObj: any;
   listaCheia: any;
 
-  constructor(private headerTitle: TitleHeaderService, age : AgePipe){}
+  constructor(private headerTitle: TitleHeaderService, age : AgePipe, private router : Router){}
   ngOnInit() {
     setTimeout(() => {
       this.headerTitle.setTitle('Estatísticas');
@@ -67,7 +67,11 @@ export class DashboardComponent {
       }
     );
   }
-
+  onPacienteSelected(paciente: any) {
+    console.log(paciente)
+    //this.router.navigate(['/patient-registration/edit']);
+    this.router.navigate(['/patient-registration/edit', paciente.id]);
+  }
 
   deatlhes(){}
   verDetalhes(){}
