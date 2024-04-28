@@ -41,9 +41,12 @@ export class ListagemPacientesComponent {
       this.listaPacientes = this.listaCheia; // Reset to original list if no search term
       return;
     }
-    this.listaPacientes = this.listaPacientes.filter(
-      (patient: { fullName: string }) =>
-        patient.fullName.toLowerCase().includes(nomePesquisa.toLowerCase())
+    this.listaPacientes = this.listaPacientes.filter((patient: { fullName: string, id: string }) => {
+      const fullNameMatch = patient.fullName && patient.fullName.toLowerCase().includes(nomePesquisa.toLowerCase());
+      const idMatch = patient.id && patient.id.toLowerCase().includes(nomePesquisa.toLowerCase());
+
+      return fullNameMatch || idMatch 
+    }
     );
   }
 }
