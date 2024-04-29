@@ -2,7 +2,7 @@ import { CommonModule, NgFor, formatDate } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid'; 
 import { TitleHeaderService } from '../services/title-header.service';
 @Component({
@@ -13,27 +13,77 @@ import { TitleHeaderService } from '../services/title-header.service';
   styleUrl: './cadastro-exame.component.css'
 })
 export class CadastroExameComponent {
+  isButtonEnabled = false;
   nomePesquisa = '';
   listaPacientes: any;
   pacienteID: any;
   pacienteSelected: any;
   novaLIstaPacientes: any ;
+  listaExames: any;
+  exameSelecionado: any
   
   
-  constructor(private headerTitle: TitleHeaderService){}
+  
+  constructor(private headerTitle: TitleHeaderService , private activeRoute: ActivatedRoute){}
   ngOnInit(){
     setTimeout(() => {
       this.headerTitle.setTitle('Cadastro de Exames');
     });
-    const localData = localStorage.getItem('patientsList');
-    if (localData != null) {
-      this.listaPacientes = JSON.parse(localData);
+    
+    
+    this.activeRoute.params.subscribe((params) => {
+    let id = params['id'];
+
+    
+
+      const pctList:any = localStorage.getItem('patientsList');
+    const exList:any = localStorage.getItem('exameList');
+    
+      this.listaPacientes = JSON.parse(pctList);
+      this.listaExames = JSON.parse(exList);
       
-    } else {
-    }
+      this.exameSelecionado = this.listaExames.find(
+        (exame: { id: string }) => exame?.id === id
+      );
+   
+    this.ExamesForm.patchValue({
+      nomeExame: this.exameSelecionado.nomeExame ? this.exameSelecionado.nomeExame:null,
+      dataExame: this.exameSelecionado.dataExame ? this.exameSelecionado.dataExame:null,
+      horarioExame: this.exameSelecionado.horarioExame ? this.exameSelecionado.horarioExame:null,
+      laboratorio: this.exameSelecionado.laboratorio ? this.exameSelecionado.laboratorio:null,
+      resultados: this.exameSelecionado.resultados ? this.exameSelecionado.resultados:null,
+      tipoExame: this.exameSelecionado.tipoExame ? this.exameSelecionado.tipoExame:null,
+
+    })
 
 
-     };
+  }
+
+
+
+
+
+
+);
+
+
+
+this.activeRoute.queryParams.subscribe(params => {
+  if (params['paciente']) {
+    this.pacienteSelected = JSON.parse(params['paciente']);
+      this.pacienteID = this.pacienteSelected[0].id;
+      //console.log(this.pacienteSelected);
+    
+  }
+});
+
+  
+
+  if(this.exameSelecionado){
+      this.isButtonEnabled = true;
+   }
+
+};
 
   ExamesForm: FormGroup = new FormGroup({
     id : new FormControl(uuidv4()),
@@ -48,23 +98,25 @@ export class CadastroExameComponent {
   onSubmit(){
   const isFormValid = this.ExamesForm.valid;
   const newExame = this.ExamesForm.value;
+
+    
    
     if(isFormValid){
     const localData = localStorage.getItem('exameList');
     if(localData != null){
       const listaExames = JSON.parse(localData);
       listaExames.push(this.ExamesForm.value);
-      //this.pacienteSelected.idsExames.push(this.ExamesForm.value.id);
+      
                     
       if (this.pacienteSelected && this.pacienteSelected.idsExames) {
-        console.log('pct encontrado')
+        console.log('pct encontrado' , this.pacienteSelected)
         this.pacienteSelected.idsExames.push(newExame.id);
         localStorage.setItem('exameList',JSON.stringify(listaExames));
         
       } else {
        alert('Favor selecionar um paciente da lista para inserir o exame');
        // this.pacienteSelected.idsExames = [newExame.id];
-       // return
+       return
       }
              
        if (this.listaPacientes != null) {
@@ -100,8 +152,7 @@ export class CadastroExameComponent {
 }
 onPacienteSelected(paciente: any) {
   this.pacienteSelected = paciente;
- 
-  this.pacienteID = paciente.id;
+    this.pacienteID = paciente.id;
  
 }
 

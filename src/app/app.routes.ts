@@ -45,7 +45,12 @@ export const routes: Routes = [{
     },
     {
         path:'cadastro-exame',
-        component: CadastroExameComponent
+        children:[
+            {path:'', component: CadastroExameComponent},{
+                path:'edit/:id', component: CadastroExameComponent
+            }
+        ]
+        
 
     },
     {
