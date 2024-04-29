@@ -1,0 +1,68 @@
+<div class="dadosPaciete">
+  <h4 style="font-weight: bold;">Dados do paciente :</h4>
+  <mat-list>
+    <p></p>
+    <mat-list-item>
+      <p>Nome : {{ paciente?.[0].fullName }}</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item
+      ><p>Tel : {{ paciente?.[0].emergencyTel }}</p></mat-list-item
+    >
+    <mat-divider></mat-divider>
+    <mat-list-item
+      ><p>Convenio : {{ paciente?.[0].NomeConvenio }}</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item
+      ><p>Alergias : {{ paciente?.[0].alergias }}</p>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      <p>Cuidados : {{ paciente?.[0].cuidados }}</p>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div class="dadosExame">
+  <h4 style="font-weight: bold;">Exames :</h4>
+  
+  <li class="card"
+  *ngFor="let exame of examsFrompct">
+  <mat-list>
+    <button (click)="onPacienteSelected(exame, paciente)">Editar</button>
+    <mat-list-item  ><p style="font-weight: bold;">Nome exame : {{ exame?.nomeExame }}</p> </mat-list-item>
+    <mat-divider></mat-divider>
+    
+    <mat-list-item><p style="font-weight: bold;">Horario exame : {{ exame?.horarioExame }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p style="font-weight: bold;">Data do Exame : {{ exame?.dataExame }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p style="font-weight: bold;">Laboratório: : {{ exame?.laboratorio }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p>Tipo de exame : {{ exame?.tipoExame }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p>Resultados : {{ exame?.resultados }}</p></mat-list-item>
+  </mat-list>
+</div>
+
+<div class="dadosConsulta">
+  <h4 style="font-weight: bold;">Consultas :</h4>
+  
+  <li class="card"
+  *ngFor="let consulta of consultasFrompct">
+  <mat-list>
+    <button>Editar</button>
+    <mat-list-item  ><p style="font-weight: bold;">Motivo Consulta : {{ consulta?.motivo }}</p> </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p style="font-weight: bold;">Data da consulta : {{ consulta?.dataConsulta }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p style="font-weight: bold;">Horário da consulta: : {{ consulta?.horarioConsulta }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item><p>Dosagem e Precauções : {{ consulta?.dosagemPrecaucao }}</p></mat-list-item>
+    <mat-divider></mat-divider>
+    
+    <mat-list-item><p >Descrição : {{ consulta?.descricao }}</p></mat-list-item>
+    
+  </mat-list>
+</div>

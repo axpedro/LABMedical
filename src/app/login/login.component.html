@@ -1,0 +1,37 @@
+
+<body>
+	
+	<div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+			<div class="signup">
+				<form [formGroup]="SignUpForm" >
+					<label for="chk" aria-hidden="true">Sign up</label>
+                   	<input type="text" name="userName" placeholder="Username (min 2 caracteres)"   formControlName="userName" required="">
+                    <input  type="email" name="email" placeholder="Ex. pat@example.com"  formControlName="email" required="">
+                    <input type="password" name="password" placeholder="Password"  formControlName="password" required="">
+                    <input type="password" name="passwordConfirm" placeholder="Password Confirmation"  formControlName="passwordConfirm" required="">
+                    <span class="passWarning"  *ngIf="SignUpForm?.errors?.['mismatch']">As senhas devem ser iguais</span>                 
+                    <button (click)="onSignUp()">Sign up</button>
+                    
+				</form>
+			</div>
+            
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true" #loginLabel>Login</label>
+					<input type="email" name="email" placeholder="Email"  required="" [(ngModel)]="loginUser.email">
+					<input type="password" name="pswd" placeholder="Password" required="" [(ngModel)]="loginUser.password">
+                    
+					<button (click)="onLogin()">Login</button>
+                    <button (click)="resetPassword()">Esqueci minha senha</button>
+				</form>
+			</div>
+	</div>
+</body>
+    
+
+
+
+
+
+    

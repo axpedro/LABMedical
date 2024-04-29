@@ -1,0 +1,18 @@
+.card{
+    display: inline-block;
+    flex: content;
+    flex-direction: column;
+    padding: 15px;
+}
+li{
+    
+    list-style-type: none;
+    text-align: center;
+    border: solid ;
+    margin: 4px;
+    border-radius: 10%;
+}
+
+.selected-card {
+    background-color: #56d41c; /* Change this to the color you prefer */
+  }

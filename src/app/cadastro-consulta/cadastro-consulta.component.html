@@ -1,0 +1,63 @@
+<div class="container">
+  <div class="busca">
+    <label for="">Busca paciente: </label>
+    <input type="text" [(ngModel)]="nomePesquisa" />
+    <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
+  </div>
+  <div class="card">
+    <li [class.selected-card]="pacienteSelected && pacienteSelected.id === patient.id"
+    class="card"
+    class="card"
+    *ngFor="let patient of listaPacientes"
+    (click)="onPacienteSelected(patient)">
+    <div>
+      <a>
+        <i class="material-icons">person</i>
+      </a>
+      <p>
+        <span>{{ patient.fullName }}</span>
+      </p>
+    </div>
+  </li>
+
+  </div>
+
+<div class="formulario">
+    <form [formGroup]="ConsultaForm" (ngSubmit)="onSubmit()">
+        <div class="consulta">
+            <label for="motivo" >Motivo da consulta: </label>
+            <input type="text" id="motivo" formControlName="motivo"  class="form-control">
+            <label for="dataConsulta">Data consulta: </label>
+            <input type="text" id="dataConsulta" formControlName="dataConsulta" class="form-control">
+            <label for="horarioConsulta">Horário consulta: </label>
+            <input type="text" id="horarioConsulta" formControlName="horarioConsulta" class="form-control">
+            <p>
+              <label for="descricao">Descrição: </label>
+              <input type="text" id="descricao" formControlName="descricao" class="form-control">
+              <label for="dosagemPrecaucao">Dosagem e Precauções: </label>
+              <input type="text" id="dosagemPrecaucao" formControlName="dosagemPrecaucao" class="form-control">
+              
+            </p>
+            
+            
+          </div>
+   
+          <p>
+            <button type="submit">Cadastrar</button>
+          </p>
+        </form>
+   
+    <p>
+        <button disabled >Deletar</button>
+      </p>
+      <p>
+        <button disabled >Editar</button>
+      </p>
+     
+
+
+</div>
+
+
+
+</div>
