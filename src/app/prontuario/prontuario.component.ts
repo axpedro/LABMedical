@@ -2,7 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TitleHeaderService } from '../services/title-header.service';
 @Component({
   selector: 'app-prontuario',
@@ -20,7 +20,7 @@ export class ProntuarioComponent {
   listaExames: any;
   listaConsultas: any;
   listaCheia: any;
-  constructor(private activeRoute: ActivatedRoute, private headerTitle: TitleHeaderService) {}
+  constructor(private activeRoute: ActivatedRoute, private headerTitle: TitleHeaderService, private router : Router) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -72,16 +72,15 @@ export class ProntuarioComponent {
       return consultasFrompct; //retorna um array de objetos-exames
     }
 
-
-
-
-
-
-
-
     }
 
-
+    onPacienteSelected(exame: any, paciente: any) {
+      this.router.navigate(['/cadastro-exame/edit', exame.id], {
+        queryParams: {
+          paciente: JSON.stringify(paciente)
+        }
+      });
+    }
   
 
 

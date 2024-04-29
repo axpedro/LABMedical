@@ -68,7 +68,7 @@ export class DashboardComponent {
     );
   }
   onPacienteSelected(paciente: any) {
-    console.log(paciente)
+    //console.log(paciente)
     //this.router.navigate(['/patient-registration/edit']);
     this.router.navigate(['/patient-registration/edit', paciente.id]);
   }

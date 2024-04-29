@@ -1,4 +1,5 @@
 <div class="dadosPaciete">
+  <h4 style="font-weight: bold;">Dados do paciente :</h4>
   <mat-list>
     <p></p>
     <mat-list-item>
@@ -24,10 +25,12 @@
 </div>
 
 <div class="dadosExame">
+  <h4 style="font-weight: bold;">Exames :</h4>
+  
   <li class="card"
   *ngFor="let exame of examsFrompct">
   <mat-list>
-    
+    <button (click)="onPacienteSelected(exame, paciente)">Editar</button>
     <mat-list-item  ><p style="font-weight: bold;">Nome exame : {{ exame?.nomeExame }}</p> </mat-list-item>
     <mat-divider></mat-divider>
     
@@ -44,10 +47,12 @@
 </div>
 
 <div class="dadosConsulta">
+  <h4 style="font-weight: bold;">Consultas :</h4>
+  
   <li class="card"
   *ngFor="let consulta of consultasFrompct">
   <mat-list>
-    
+    <button>Editar</button>
     <mat-list-item  ><p style="font-weight: bold;">Motivo Consulta : {{ consulta?.motivo }}</p> </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item><p style="font-weight: bold;">Data da consulta : {{ consulta?.dataConsulta }}</p></mat-list-item>

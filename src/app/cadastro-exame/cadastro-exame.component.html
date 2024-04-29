@@ -1,26 +1,30 @@
 <div class="container">
-  <div class="busca">
-    <label for="">Busca paciente: </label>
-    <input type="text" [(ngModel)]="nomePesquisa" />
-    <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
-  </div>
-  <div class="card">
-    <li [class.selected-card]="pacienteSelected && pacienteSelected.id === patient.id"
-    class="card"
-    
-    *ngFor="let patient of listaPacientes"
-    (click)="onPacienteSelected(patient)">
-    <div>
-      <a>
-        <i class="material-icons">person</i>
-      </a>
-      <p>
-        <span>{{ patient.fullName }}</span>
-      </p>
+  <div class="listaPcts" *ngIf="!isButtonEnabled">
+    <div class="busca">
+      <label for="">Busca paciente: </label>
+      <input type="text" [(ngModel)]="nomePesquisa" />
+      <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
     </div>
-  </li>
-
+    <div class="card">
+      <li [class.selected-card]="pacienteSelected && pacienteSelected.id === patient.id"
+      class="card"
+      
+      *ngFor="let patient of listaPacientes"
+      (click)="onPacienteSelected(patient)">
+      <div>
+        <a>
+          <i class="material-icons">person</i>
+        </a>
+        <p>
+          <span>{{ patient.fullName }}</span>
+        </p>
+      </div>
+    </li>
+  
+    </div>
+  
   </div>
+  
   
   <div class="formulario">
       <form [formGroup]="ExamesForm" (ngSubmit)="onSubmit()">
@@ -49,10 +53,10 @@
           </form>
      
       <p>
-          <button disabled >Deletar</button>
+          <button *ngIf="isButtonEnabled" >Deletar</button>
         </p>
         <p>
-          <button disabled >Editar</button>
+          <button *ngIf="isButtonEnabled" >Editar</button>
         </p>
        
   
